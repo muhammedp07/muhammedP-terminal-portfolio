@@ -9,7 +9,7 @@ interface TerminalProps {
 
 export const Terminal: React.FC<TerminalProps> = ({ className }) => {
   const [input, setInput] = useState('');
-  const [lines, setLines] = useState<Array<{ type: 'input' | 'output' | 'error'; content: string; prompt?: string }>>([]);
+  const [lines, setLines] = useState<Array<{ type: 'input' | 'output' | 'error'; content: string; prompt?: string; isAscii?: boolean; }>>([]);
   const [isTyping, setIsTyping] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -199,7 +199,7 @@ Type 'help' to see available commands or 'about' to learn more about me.
 `;
 
     const timer = setTimeout(() => {
-      setLines([{ type: 'output', content: welcomeMessage }]);
+      setLines([{ type: 'output', content: welcomeMessage, isAscii: true }]);
       setIsTyping(false);
     }, 1000);
 
@@ -265,3 +265,4 @@ Type 'help' to see available commands or 'about' to learn more about me.
     </>
   );
 };
+

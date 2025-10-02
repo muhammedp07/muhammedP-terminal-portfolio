@@ -4,9 +4,10 @@ interface TerminalLineProps {
   type: 'input' | 'output' | 'error';
   content: string;
   prompt?: string;
+  isAscii?: boolean;
 }
 
-export const TerminalLine: React.FC<TerminalLineProps> = ({ type, content, prompt }) => {
+export const TerminalLine: React.FC<TerminalLineProps> = ({ type, content, prompt, isAscii }) => {
   if (type === 'input') {
     return (
       <div className="terminal-line">
@@ -24,9 +25,16 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({ type, content, promp
     );
   }
 
+  // OUTPUT
   return (
     <div className="terminal-line">
-      <pre className="terminal-output">{content}</pre>
+      {isAscii ? (
+        <pre className="whitespace-pre font-mono font-bold ascii-gradient">
+          {content}
+        </pre>
+      ) : (
+        <pre className="terminal-output">{content}</pre>
+      )}
     </div>
   );
 };
