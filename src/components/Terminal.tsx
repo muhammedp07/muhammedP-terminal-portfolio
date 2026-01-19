@@ -26,7 +26,7 @@ const downloadResume = (filePath: string, fileName: string) => {
 };
 
   const commands = {
-    help: () => `Available commands:
+    help: () => `Available  :
 ┌─────────────┬─────────────────────────────────────┐
 │ Command     │ Description                         │
 ├─────────────┼─────────────────────────────────────┤
@@ -100,8 +100,13 @@ Feel free to reach out for collaborations or opportunities!`,
 Your download will start automatically.`,
     exit: () => `Thanks for visiting! 👋
 To restart the terminal, refresh the page.`,
-  };
 
+    clear: () => {
+    setLines([]);
+    return '';
+  },
+};
+    
   const executeCommand = useCallback((cmd: string) => {
   const parts = cmd.trim().toLowerCase().split(' ');
   const baseCmd = parts[0];
