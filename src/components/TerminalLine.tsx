@@ -7,7 +7,33 @@ interface TerminalLineProps {
   isAscii?: boolean;
 }
 
-export const TerminalLine: React.FC<TerminalLineProps> = ({ type, content, prompt, isAscii }) => {
+const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+const renderWithLinks = (text: string) => {
+  return text.split(urlRegex).map((part, index) => {
+    if (urlRegex.test(part)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="terminal-link"
+        >
+          {part}
+        </a>
+      );
+    }
+    return <span key={index}>{part}</span>;
+  });
+};
+
+export const TerminalLine: React.FC<TerminalLineProps> = ({
+  type,
+  content,
+  prompt,
+  isAscii,
+}) => {
   if (type === 'input') {
     return (
       <div className="terminal-line">
@@ -25,16 +51,23 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({ type, content, promp
     );
   }
 
-  // OUTPUT
-  return (
-    <div className="terminal-line">
-      {isAscii ? (
+  // ASCII OUTPUT (leave untouched)
+  if (isAscii) {
+    return (
+      <div className="terminal-line">
         <pre className="whitespace-pre font-mono font-bold ascii-gradient">
           {content}
         </pre>
-      ) : (
-        <pre className="terminal-output">{content}</pre>
-      )}
+      </div>
+    );
+  }
+
+  // NORMAL OUTPUT (with clickable links)
+  return (
+    <div className="terminal-line">
+      <pre className="terminal-output">
+        {renderWithLinks(content)}
+      </pre>
     </div>
   );
 };

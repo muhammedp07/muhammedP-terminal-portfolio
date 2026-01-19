@@ -16,6 +16,15 @@ export const Terminal: React.FC<TerminalProps> = ({ className }) => {
   const { history, addToHistory, navigateHistory, resetNavigation } = useTerminalHistory();
   const [historyIndex, setHistoryIndex] = useState(-1);
 
+const downloadResume = (filePath: string, fileName: string) => {
+  const link = document.createElement('a');
+  link.href = filePath;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
   const commands = {
     help: () => `Available commands:
 ┌─────────────┬─────────────────────────────────────┐
@@ -28,7 +37,7 @@ export const Terminal: React.FC<TerminalProps> = ({ className }) => {
 │ skills      │ List my technical skills            │
 │ contact     │ Get my contact information          │
 │ socials     │ View my social media links          │
-│ resume      │ Download my resume                  │
+│ resume      │ Download my resume (dev / cyber)    │
 │ clear       │ Clear terminal screen               │
 │ exit        │ Close terminal                      │
 └─────────────┴─────────────────────────────────────┘`,
@@ -80,29 +89,52 @@ Feel free to reach out for collaborations or opportunities!`,
       return output;
     },
 
-    resume: () => `📄 Resume download will be available soon!
-Meanwhile, check out my projects and contact me directly.`,
+    resume: () => `📄 RESUME DOWNLOAD OPTIONS:
 
-    clear: () => {
-      setLines([]);
-      return '';
-    },
+1️⃣ Software Developer Resume
+   → Type: resume dev
 
+2️⃣ Cybersecurity Resume
+   → Type: resume cyber
+
+Your download will start automatically.`,
     exit: () => `Thanks for visiting! 👋
 To restart the terminal, refresh the page.`,
   };
 
   const executeCommand = useCallback((cmd: string) => {
-    const trimmedCmd = cmd.trim().toLowerCase();
-    
-    if (trimmedCmd === '') return '';
-    
-    if (commands[trimmedCmd as keyof typeof commands]) {
-      return commands[trimmedCmd as keyof typeof commands]();
-    } else {
-      return `Command not found: ${trimmedCmd}. Type 'help' for available commands.`;
+  const parts = cmd.trim().toLowerCase().split(' ');
+  const baseCmd = parts[0];
+  const arg = parts[1];
+
+  if (!baseCmd) return '';
+
+  if (baseCmd === 'resume') {
+    if (arg === 'dev') {
+      downloadResume(
+        '/resumes/Muhammed_Patel_Resume_Soft_dev.pdf',
+        'Muhammed_Software_Developer_Resume.pdf'
+      );
+      return '⬇️ Downloading Software Developer Resume...';
     }
-  }, []);
+
+    if (arg === 'cyber') {
+      downloadResume(
+        '/resumes/Muhammed_Patel_Resume_security.pdf',
+        'Muhammed_Cybersecurity_Resume.pdf'
+      );
+      return '⬇️ Downloading Cybersecurity Resume...';
+    }
+
+    return commands.resume();
+  }
+
+  if (commands[baseCmd as keyof typeof commands]) {
+    return commands[baseCmd as keyof typeof commands]();
+  }
+
+  return `Command not found: ${cmd}. Type 'help' for available commands.`;
+}, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -145,7 +177,15 @@ To restart the terminal, refresh the page.`,
     } else if (e.key === 'Tab') {
       e.preventDefault();
       const availableCommands = Object.keys(commands);
-      const matches = availableCommands.filter(cmd => cmd.startsWith(input.toLowerCase()));
+      const allCommands = [
+  ...Object.keys(commands),
+  'resume dev',
+  'resume cyber'
+];
+
+const matches = allCommands.filter(cmd =>
+  cmd.startsWith(input.toLowerCase())
+);
       if (matches.length === 1) {
         setInput(matches[0]);
       }

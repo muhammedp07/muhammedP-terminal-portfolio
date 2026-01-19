@@ -20,38 +20,83 @@ export const portfolioData = {
 🌟 My goal is to become a cybersecurity professional who helps organizations stay one step ahead of threats while making the digital world a safer place for everyone.`,
 
   projects: [
-    {
-      name: "Vulnerability Scanner",
-      description: "A Python-based network vulnerability scanner that identifies common security weaknesses in web applications and network services.",
-      tech: ["Python", "Nmap", "SQLAlchemy", "Flask", "Docker"],
-      status: "Active Development",
-      github: "https://github.com/alexchen/vuln-scanner",
-      demo: "https://vulnscanner-demo.herokuapp.com"
-    },
-    {
-      name: "Secure Chat Application",
-      description: "End-to-end encrypted messaging app with perfect forward secrecy, built with modern cryptographic protocols.",
-      tech: ["React", "Node.js", "WebRTC", "Signal Protocol", "PostgreSQL"],
-      status: "Completed",
-      github: "https://github.com/alexchen/secure-chat",
-      demo: "https://securechat-demo.netlify.app"
-    },
-    {
-      name: "Honeypot Network",
-      description: "Distributed honeypot system to detect and analyze malicious activities across different network protocols.",
-      tech: ["Go", "Docker", "ELK Stack", "Redis", "Grafana"],
-      status: "In Progress",
-      github: "https://github.com/alexchen/honeypot-network"
-    },
-    {
-      name: "Crypto CTF Platform",
-      description: "Educational platform for cryptography challenges, featuring various cipher types and modern cryptographic puzzles.",
-      tech: ["Django", "PostgreSQL", "Redis", "Celery", "Bootstrap"],
-      status: "Completed",
-      github: "https://github.com/alexchen/crypto-ctf",
-      demo: "https://crypto-ctf.herokuapp.com"
-    }
-  ],
+  {
+    name: "AI Shield — AI Security Firewall",
+    description:
+      "Production-ready AI security firewall that detects and blocks prompt injection and jailbreak attacks before requests reach LLMs. Uses multi-layer risk scoring and real-time verdict classification.",
+    tech: [
+      "Python",
+      "FastAPI",
+      "React",
+      "SQLite",
+      "Docker",
+      "Railway",
+      "Vercel"
+    ],
+    status: "Active Development",
+    highlights: [
+      "Detects 50+ malicious prompt patterns in real time",
+      "Multi-layer risk scoring (Safe / Suspicious / Blocked)",
+      "Live monitoring dashboard with secure AI proxying",
+    ],
+    github: "https://github.com/muhammedp07/AiShield"
+  },
+  {
+    name: "Vulnerability Management System",
+    description:
+      "Automated vulnerability detection and management system aligned with NIST CSF, performing network scanning, service enumeration, and risk scoring.",
+    tech: [
+      "Python",
+      "Nmap",
+      "TCP/IP",
+      "Socket Programming",
+      "SQLite"
+    ],
+    status: "Completed",
+    highlights: [
+      "Automated vulnerability detection and reporting",
+      "Custom Python scripts for service enumeration",
+      "Historical trend analysis using stored scan data"
+    ],
+    github: "https://github.com/muhammedp07/vulnerability-management-system"
+  },
+  {
+    name: "Phishing Link Scanner",
+    description:
+      "Web-based phishing detection tool that analyzes URLs using real-time threat intelligence to identify malicious links.",
+    tech: [
+      "Python",
+      "Flask",
+      "AWS EC2",
+      "Nginx",
+      "Gunicorn"
+    ],
+    status: "Completed",
+    highlights: [
+      "Real-time detection using Google Safe Browsing API",
+      "Secure cloud deployment with SSL and reverse proxy",
+      "Focus on cloud and web security best practices"
+    ],
+    github: "https://github.com/muhammedp07/plscanner"
+  },
+  {
+    name: "Secure Web Applications (MSA Projects)",
+    description:
+      "Developed and maintained secure full-stack web applications with authentication, access control, and encrypted data handling for university organizations.",
+    tech: [
+      "React",
+      "Node.js",
+      "JavaScript",
+      "Authentication",
+      "Encryption"
+    ],
+    status: "Completed",
+    highlights: [
+      "Implemented secure authentication and access control",
+      "Applied secure coding practices to prevent common web vulnerabilities"
+    ]
+  }
+],
 
   skills: {
     "Security & Penetration Testing": [
@@ -115,16 +160,11 @@ export const portfolioData = {
   },
 
   contact: {
-    email: "alex.chen@email.com",
-    phone: "+1 (555) 123-4567",
-    location: "San Francisco, CA"
+    email: "mrpatel@mun.ca",
   },
 
   socials: {
-    github: "https://github.com/alexchen",
-    linkedin: "https://linkedin.com/in/alexchen-cybersec",
-    twitter: "https://twitter.com/alexchen_sec",
-    blog: "https://alexchen.dev",
-    discord: "alexchen#1337"
+    github: "https://github.com/muhammedp07",
+    linkedin: "https://www.linkedin.com/in/muhammedpatel007/"
   }
 };

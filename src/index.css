@@ -307,5 +307,20 @@
   animation: gradient-move 8s linear infinite;
 }
 
+.terminal-link {
+  color: #00ff9c;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.terminal-link:hover {
+  color: #5affc8;
+}
+
+.terminal-link::after {
+  content: " ↗";
+  opacity: 0.6;
+}
+
 
 }
