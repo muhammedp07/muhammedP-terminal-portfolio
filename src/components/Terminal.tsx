@@ -26,7 +26,7 @@ const downloadResume = (filePath: string, fileName: string) => {
 };
 
   const commands = {
-    help: () => `Available  :
+    help: () => `Available Commands:
 ┌─────────────┬─────────────────────────────────────┐
 │ Command     │ Description                         │
 ├─────────────┼─────────────────────────────────────┤
