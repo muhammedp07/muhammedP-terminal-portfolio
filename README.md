@@ -17,7 +17,7 @@ The portfolio supports interactive commands, clickable links, and resume downloa
 
 ## Getting Started
 ```bash
-git clone https://github.com/muhammedp07/terminal-portfolio.git
+git clone https://github.com/muhammedp07/muhammedP-terminal-portfolio.git
 cd terminal-portfolio
 npm install
 npm run dev
